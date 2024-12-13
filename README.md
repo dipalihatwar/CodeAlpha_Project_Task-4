@@ -3,36 +3,36 @@
 A Network Intrusion Detection System (NIDS) is a cybersecurity tool that observes and examines network activity to identify potential threats or breaches. By continuously monitoring data flow, it can detect unusual patterns or suspicious behavior that may signal a security issue. The system examines data packets as they travel through the network and uses predefined rules or behavioral analytics to recognize known attack methods and unusual activities. NIDS can identify threats such as unauthorized access, denial-of-service attacks, and harmful data transmissions, helping to protect the network from various cyber risks.
 This project demonstrate the setup of a network based intrusion detection system using suricata to monitor and analyze network traffic.
   
-  •Tool used : suricata 
+  •TOOL USE: suricata 
   
-  •Features : 
+  •FEATURES : 
     
     -Real-time network traffic analysis
     
     -Logging and alerting mechanisms
 
- •Installation:
+ •INSTALLATION:
  
-  Step1: start your kali linux
+  STEP 1: start your kali linux
   
-  Step2: Update Kali Linux:
+  STEP 2: Update Kali Linux:
   Before installing Suricata, update and upgrade your Kali Linux system
  
   sudo apt update
   
   sudo apt upgrade -y
  
-  Step3: Install Suricata: sudo apt install suricata -y
+  STEP 3: Install Suricata: sudo apt install suricata -y
   ![Screenshot 2024-12-12 163123](https://github.com/user-attachments/assets/66b49428-17e6-4f70-837e-08c1cf355259)
  
-  Step4: Verify Installation: suricata --version
+  STEP 4: Verify Installation: suricata --version
   ![Screenshot 2024-12-12 171102](https://github.com/user-attachments/assets/cd4048e6-7ed6-4cd9-a44f-dc338ac7e286)
 
-  Step5: Configure Network Interface: Suricata needs to know which network interface to monitor
+  STEP 5: Configure Network Interface: Suricata needs to know which network interface to monitor
  
   ip a
  
-  Step6: Edit Suricata Configuration:
+  STEP 6: Edit Suricata Configuration:
  
   Suricata’s configuration file is located at /etc/suricata/suricata.yaml
  
@@ -55,8 +55,8 @@ This project demonstrate the setup of a network based intrusion detection system
        enabled: yes
        filetype: regular 
        filename: /var/log/suricata/eve.json
-       
-   Step7:Set Up Suricata Rules:
+
+    STEP 7:Set Up Suricata Rules:
   
    - update suricata:
       sudo suricata-update
@@ -74,11 +74,11 @@ This project demonstrate the setup of a network based intrusion detection system
     
     alert http $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"' OR 1=1 --"; http_uri; sid:1000002;)
 
-  Step8: Start Suricata to Monitor Traffic: 
+  STEP 8: Start Suricata to Monitor Traffic: 
     
      sudo suricata -c /etc/suricata/suricata.yaml -i eth0
 
-  Step9: Check the Suricata Logs:
+  STEP 9: Check the Suricata Logs:
     
     cat /var/log/suricata/eve.json
     
